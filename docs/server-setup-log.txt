@@ -1,0 +1,28 @@
+Date: 2026-11-23
+Author: Christian Hansen
+
+Groups Created (4):
+- engineering
+- marketing
+- operations
+- admins
+
+Users Created (12 unique users; 14 memberships total):
+- engineering (4): Alice, Bob, Carol, Dave
+- marketing (3): Emma, Frank, Grace
+- operations (5): Henry, Iris, Jack, Kate, Leo
+- admins (2): Kate, Leo
+Note: Kate and Leo belong to both operations and admins.
+
+Directory Structure, Group Owners, and Modes:
+/shared/
+├── engineering/       group: engineering, mode: 770
+├── marketing/         group: marketing,   mode: 770
+├── operations/        group: operations,  mode: 770
+└── company-docs/      group: admins,      mode: 775
+/logs/
+└── reports/           group: admins,      mode: 775
+
+Access Testing & Issues Encountered:
+- Group permission checks passed the three-move test without issue.
+- Created "Carol" with an uppercase C, which did not match the naming syntax. Deleted the user, forgot to pass the flag to remove the home directory automatically, and cleaned up the leftover home directory manually.
