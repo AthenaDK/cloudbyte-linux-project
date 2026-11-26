@@ -79,6 +79,9 @@ Additionally, users created using this script are prompted to change their passw
 A sample CSV ships at `data/new-hires.csv` for repeat runs and
 idempotency checks.
 
+## Optional audit logging 
+(--log): Off by default. When passed (including with --csv), each newly created user appends a timestamped entry to /var/log/cloudbyte-onboarding.log. Skipped users, failed group lookups, and --dry-run runs do not write to the log.
+
 ### Verification
 
 `verify-onboarding.sh` walks the script and the CSV end-to-end and
