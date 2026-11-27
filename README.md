@@ -99,6 +99,8 @@ script is interrupted mid-run. `scripts/cleanup-backups.sh` prunes archives
 older than seven days, with a `--preview` flag that lists what would go
 without deleting anything. Root cron drives both.
 
+Script added: scripts/restore-backup.sh provides an interactive restore workflow (run with sudo). It checks /shared/backups for existing archives, presents a numbered menu to choose one, and prompts for a target directory—defaulting to /tmp/restore-$(date +%F-%H%M%S) if left blank while blocking /shared and paths under it to protect live data. It asks for confirmation before extracting and uses a trap to clean up partial extractions if interrupted or failed.
+
 ### Schedule
 
 | Script                       | Schedule    | Log file                         |
@@ -112,4 +114,4 @@ without deleting anything. Root cron drives both.
 crontab in one go and prints a ✅ or ❌ for each requirement. Run it on
 the VM with:
 
-(Vagrant): repo is mounted at /vagrant: bash /vagrant/verify-onboarding.sh
+(Vagrant): repo is mounted at /vagrant: bash /vagrant/verify-backup.sh
